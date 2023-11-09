@@ -6,11 +6,11 @@ export default class Camera {
         this.experience = new Experience()
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
-        this.canvas = this.experience.canvas 
+        this.canvas = this.experience.canvas
 
         this.setInstance()
         this.setOrbitControls()
-    }    
+    }
     setInstance() {
         this.instance = new THREE.PerspectiveCamera(
             35,

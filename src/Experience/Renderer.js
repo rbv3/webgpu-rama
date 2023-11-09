@@ -1,8 +1,8 @@
 import * as THREE from 'three'
-import WebGPU from 'three/addons/capabilities/WebGPU.js';
-import WebGPURenderer from 'three/addons/renderers/webgpu/WebGPURenderer.js';
+import WebGPU from 'three/addons/capabilities/WebGPU.js'
+import WebGPURenderer from 'three/addons/renderers/webgpu/WebGPURenderer.js'
 
-import Experience from "./Experience.js";
+import Experience from './Experience.js'
 
 export default class Renderer {
     constructor() {
@@ -12,16 +12,16 @@ export default class Renderer {
         this.scene = this.experience.scene
         this.camera = this.experience.camera
 
-        console.log('all good');
+        console.log('all good')
         this.setInstance()
     }
 
     setInstance() {
         if ( WebGPU.isAvailable() === false ) {
 
-            document.body.appendChild( WebGPU.getErrorMessage() );
+            document.body.appendChild( WebGPU.getErrorMessage() )
 
-            throw new Error( 'No WebGPU support' );
+            throw new Error( 'No WebGPU support' )
         }
         console.log(this.canvas)
         this.instance = new WebGPURenderer({

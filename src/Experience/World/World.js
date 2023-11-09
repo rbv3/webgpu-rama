@@ -1,5 +1,4 @@
-import * as THREE from 'three'
-import Experience from "../Experience";
+import Experience from '../Experience'
 
 
 export default class World {
@@ -12,12 +11,12 @@ export default class World {
     }
 
     loadFox() {
-        this.gltfLoader.load('models/Fox/glTF/Fox.gltf', 
-        (gltf) => {
-            this.scene.add(gltf.scene)
-            gltf.scene.scale.set(0.01, 0.01, 0.01)
-            console.log(gltf);
-        }),
+        this.gltfLoader.load('models/Fox/glTF/Fox.gltf',
+            (gltf) => {
+                this.scene.add(gltf.scene)
+                gltf.scene.scale.set(0.01, 0.01, 0.01)
+                console.log(gltf)
+            }),
         () => {},
         (err) => console.log(err)
     }

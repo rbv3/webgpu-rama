@@ -1,7 +1,7 @@
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 export default class Loaders {
     constructor() {
-        this.gltfLoader = new GLTFLoader();
+        this.gltfLoader = new GLTFLoader()
     }
 }
