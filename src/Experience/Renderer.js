@@ -1,4 +1,7 @@
 import * as THREE from 'three'
+import WebGPU from 'three/addons/capabilities/WebGPU.js';
+import WebGPURenderer from 'three/addons/renderers/webgpu/WebGPURenderer.js';
+
 import Experience from "./Experience.js";
 
 export default class Renderer {
@@ -14,8 +17,14 @@ export default class Renderer {
     }
 
     setInstance() {
+        if ( WebGPU.isAvailable() === false ) {
+
+            document.body.appendChild( WebGPU.getErrorMessage() );
+
+            throw new Error( 'No WebGPU support' );
+        }
         console.log(this.canvas)
-        this.instance = new THREE.WebGLRenderer({
+        this.instance = new WebGPURenderer({
             canvas: this.canvas,
             antialias: true
         })

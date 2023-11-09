@@ -4,6 +4,8 @@ import Time from "./Utils/Time.js"
 import Camera from "./Camera.js"
 import Renderer from './Renderer.js'
 import World from './World/World.js'
+import Loaders from './Utils/Loaders.js'
+import StatsMonitor from './Utils/StatsMonitor.js'
 
 let instance = null
 
@@ -21,12 +23,16 @@ export default class Experience {
         // Options
         this.canvas = canvas
 
+        // Debug
+        this.statsMonitor = new StatsMonitor()
+
         //Setup
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
         this.camera = new Camera()
         this.renderer = new Renderer()
+        this.loaders = new Loaders()
         this.world = new World()
 
         // Events
@@ -44,8 +50,12 @@ export default class Experience {
         this.renderer.resize()
     }
     update() {
+        this.statsMonitor.instance.begin()
+        
         this.camera.update()
         this.renderer.update()
+
+        this.statsMonitor.instance.end()
     }
     
 }

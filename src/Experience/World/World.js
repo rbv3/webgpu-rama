@@ -6,17 +6,19 @@ export default class World {
     constructor() {
         this.experience = new Experience()
         this.scene = this.experience.scene
+        this.gltfLoader = this.experience.loaders.gltfLoader
 
-        const testMesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial({
-                wireframe: true,
-                color: 'white'
-            })
-        )
-        this.scene.add(testMesh)
+        this.loadFox()
+    }
 
-        console.log('ZA WARUDO');
-        console.log(this.scene);
+    loadFox() {
+        this.gltfLoader.load('models/Fox/glTF/Fox.gltf', 
+        (gltf) => {
+            this.scene.add(gltf.scene)
+            gltf.scene.scale.set(0.01, 0.01, 0.01)
+            console.log(gltf);
+        }),
+        () => {},
+        (err) => console.log(err)
     }
 }
